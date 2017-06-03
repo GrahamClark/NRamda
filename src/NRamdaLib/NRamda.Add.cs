@@ -11,7 +11,7 @@ namespace NRamdaLib
 
         public static Func<int, int> Add(int x)
         {
-            return y => x + y;
+            return Curry<int, int, int>(Add)(x);
         }
 
         public static float Add(float x, float y)
@@ -21,7 +21,7 @@ namespace NRamdaLib
 
         public static Func<float, float> Add(float x)
         {
-            return y => x + y;
+            return Curry<float, float, float>(Add)(x);
         }
 
         public static double Add(double x, double y)
@@ -31,7 +31,7 @@ namespace NRamdaLib
 
         public static Func<double, double> Add(double x)
         {
-            return y => x + y;
+            return Curry<double, double, double>(Add)(x);
         }
 
         public static decimal Add(decimal x, decimal y)
@@ -41,7 +41,7 @@ namespace NRamdaLib
 
         public static Func<decimal, decimal> Add(decimal x)
         {
-            return y => x + y;
+            return Curry<decimal, decimal, decimal>(Add)(x);
         }
     }
 }
