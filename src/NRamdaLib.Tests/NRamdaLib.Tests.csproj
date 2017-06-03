@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp1.1</TargetFramework>    
+    <AssemblyName>NRamdaLib.Tests</AssemblyName>    
+    <RootNamespace>NRamdaLib.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="NRamda.Tests.v3.ncrunchproject" />
+    <None Remove="NRamdaLib.Tests.v3.ncrunchproject" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NRamda\NRamda.csproj" />
+    <ProjectReference Include="..\NRamdaLib\NRamdaLib.csproj" />
   </ItemGroup>
 
 </Project>

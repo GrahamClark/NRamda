@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRamda", "NRamda\NRamda.csproj", "{E4AD0D5B-F8D4-4788-90EC-E242FFBC4BF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRamda", "NRamdaLib\NRamdaLib.csproj", "{E4AD0D5B-F8D4-4788-90EC-E242FFBC4BF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRamda.Tests", "NRamda.Tests\NRamda.Tests.csproj", "{752163C8-88F4-49B1-8A5A-FE59CABE8FA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRamdaLib.Tests", "NRamdaLib.Tests\NRamdaLib.Tests.csproj", "{752163C8-88F4-49B1-8A5A-FE59CABE8FA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

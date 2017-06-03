@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>NRamdaLib</AssemblyName>
+    <RootNamespace>NRamdaLib</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="NRamda.v3.ncrunchproject" />
+    <None Remove="NRamdaLib.v3.ncrunchproject" />
   </ItemGroup>
 
   <ItemGroup>

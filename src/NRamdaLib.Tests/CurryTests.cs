@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace NRamda.Tests
+namespace NRamdaLib.Tests
 {
     public class CurryTests
     {
