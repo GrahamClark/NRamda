@@ -12,9 +12,9 @@ namespace NRamdaLib.Tests
             Func<int, int> timesTwo = x => x * 2;
             var expected = new[] {2, 4, 6};
 
-            var mapped = NRamda.Map(timesTwo, new[] {1, 2, 3});
+            var doubleList = timesTwo.Map(new[] {1, 2, 3});
 
-            mapped.Should().BeEquivalentTo(expected);
+            doubleList.ShouldAllBeEquivalentTo(expected);
         }
     }
 }
