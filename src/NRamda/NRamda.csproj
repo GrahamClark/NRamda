@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="NRamda.v3.ncrunchproject" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="NRamda.Curry.cs" />
   </ItemGroup>
 
