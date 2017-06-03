@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentAssertions;
 using Xunit;
 
 namespace NRamdaLib.Tests
@@ -6,12 +7,23 @@ namespace NRamdaLib.Tests
     public class CurryTests
     {
         [Fact]
-        public void CanCurryTwoParameterFunction()
+        public void CanCurryTwoParameterIntFunction()
         {
             Func<int, int, int> add = (x, y) => x + y;
+
             var curriedAdd = NRamda.Curry(add);
 
-            Assert.Equal(curriedAdd(3)(4), add(3, 4));
+            curriedAdd(3)(4).Should().Be(add(3, 4));
+        }
+
+        [Fact]
+        public void CanCurryTwoParameterStringFunction()
+        {
+            Func<string, string, string> append = (x, y) => x + y;
+
+            var curriedAppend = NRamda.Curry(append);
+
+            curriedAppend("hello")("there").Should().Be(append("hello", "there"));
         }
     }
 }
