@@ -9,7 +9,7 @@ namespace NRamdaLib
             return x + y;
         }
 
-        public static Func<int, int> Add(int x)
+        public static Func<int, int> Add(this int x)
         {
             return Curry<int, int, int>(Add)(x);
         }
@@ -19,7 +19,7 @@ namespace NRamdaLib
             return x + y;
         }
 
-        public static Func<float, float> Add(float x)
+        public static Func<float, float> Add(this float x)
         {
             return Curry<float, float, float>(Add)(x);
         }
@@ -29,7 +29,7 @@ namespace NRamdaLib
             return x + y;
         }
 
-        public static Func<double, double> Add(double x)
+        public static Func<double, double> Add(this double x)
         {
             return Curry<double, double, double>(Add)(x);
         }
@@ -39,7 +39,7 @@ namespace NRamdaLib
             return x + y;
         }
 
-        public static Func<decimal, decimal> Add(decimal x)
+        public static Func<decimal, decimal> Add(this decimal x)
         {
             return Curry<decimal, decimal, decimal>(Add)(x);
         }
