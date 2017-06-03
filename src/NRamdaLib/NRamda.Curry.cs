@@ -2,7 +2,7 @@
 
 namespace NRamdaLib
 {
-    public static class NRamda
+    public static partial class NRamda
     {
         public static Func<T1, Func<T2, T3>> Curry<T1, T2, T3>(this Func<T1, T2, T3> func)
         {
