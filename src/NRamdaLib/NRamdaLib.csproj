@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="NRamda.AllPass.cs" />
     <None Include="NRamda.Curry.cs" />
   </ItemGroup>
 
