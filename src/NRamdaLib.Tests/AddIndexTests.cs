@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -11,11 +10,11 @@ namespace NRamdaLib.Tests
         [Fact]
         public void CanWorkLikeNormalMap()
         {
-            Func<int, int, IEnumerable<int>, int> timesTwo = (x, idx, list) => x * 2;
             var mapIndexed = NRamda.AddIndex<int>(NRamda.Map);
+            int TimesTwo(int x, int idx, IEnumerable<int> list) => x * 2;
             var expected = new[] {2, 4, 6, 8};
 
-            var mapped = mapIndexed(timesTwo, new[] {1, 2, 3, 4});
+            var mapped = mapIndexed(TimesTwo, new[] {1, 2, 3, 4});
 
             mapped.ShouldAllBeEquivalentTo(expected);
         }
@@ -36,14 +35,34 @@ namespace NRamdaLib.Tests
         [Fact]
         public void CanUseEntireListParameter()
         {
-            Func<int, int, IEnumerable<int>, int> squareEnds = 
-                (x, idx, list) => idx == 0 || idx == list.Count() - 1 ? x * x : x;
             var mapIndexed = NRamda.AddIndex<int>(NRamda.Map);
+
+            int SquareEnds(int x, int idx, IEnumerable<int> list) =>
+                idx == 0 || idx == list.Count() - 1 ? x * x : x;
+
             var expected = new[] {64, 6, 7, 5, 3, 0, 81};
 
-            var mapped = mapIndexed(squareEnds, new[] {8, 6, 7, 5, 3, 0, 9});
+            var mapped = mapIndexed(SquareEnds, new[] {8, 6, 7, 5, 3, 0, 9});
 
             mapped.ShouldAllBeEquivalentTo(expected);
+        }
+
+        [Fact]
+        public void CanWorkWithBinaryFunctions()
+        {
+            var reduceIndexed = NRamda.AddIndex<int, int>(NRamda.Reduce);
+
+            int TimesIndexed(
+                int total,
+                int number,
+                int index,
+                IEnumerable<int> list) => total + number * index;
+
+            int expected = 40;
+
+            var actual = reduceIndexed(TimesIndexed, 0, new[] {1, 2, 3, 4, 5});
+
+            actual.Should().Be(expected);
         }
     }
 }

@@ -24,5 +24,22 @@ namespace NRamdaLib
                 return newList;
             };
         }
+
+        public static Func<Func<T2, T1, int, IEnumerable<T1>, T2>, T2, IEnumerable<T1>, T2>
+            AddIndex<T1, T2>(
+                this Func<Func<T2, T1, T2>, T2, IEnumerable<T1>, T2> accFunc)
+        {
+            return (func, acc, collection) =>
+            {
+                int index = 0;
+                var list = collection.ToList();
+                foreach (var item in list)
+                {
+                    acc = func(acc, item, index++, list);
+                }
+
+                return acc;
+            };
+        }
     }
 }
