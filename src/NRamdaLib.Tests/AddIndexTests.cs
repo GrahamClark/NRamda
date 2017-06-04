@@ -64,5 +64,35 @@ namespace NRamdaLib.Tests
 
             actual.Should().Be(expected);
         }
+
+        [Fact]
+        public void CanBuildHashMap()
+        {
+            var reduceIndexed = NRamda.AddIndex<string, Dictionary<string, int>>(NRamda.Reduce);
+
+            Dictionary<string, int> HashMapify(
+                Dictionary<string, int> dict,
+                string item,
+                int index,
+                IEnumerable<string> list)
+                {
+                    dict[item] = index;
+                    return dict;
+                }
+
+            var expected = new Dictionary<string, int>
+            {
+                {"a", 0},
+                {"b", 1},
+                {"c", 2},
+                {"d", 3},
+                {"e", 4}
+            };
+
+            var hashMap = new Dictionary<string, int>();
+            var reduced = reduceIndexed(HashMapify, hashMap, new[] {"a", "b", "c", "d", "e"});
+
+            reduced.ShouldAllBeEquivalentTo(expected);
+        }
     }
 }
