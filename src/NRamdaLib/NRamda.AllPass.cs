@@ -74,5 +74,23 @@ namespace NRamdaLib
                 return true;
             };
         }
+
+        public static Func<T1, Func<T2, bool>> AllPassCurried<T1, T2>(
+            Func<T1, T2, bool>[] predicates)
+        {
+            return Curry(AllPass(predicates));
+        }
+
+        public static Func<T1, Func<T2, Func<T3, bool>>> AllPassCurried<T1, T2, T3>(
+            Func<T1, T2, T3, bool>[] predicates)
+        {
+            return Curry(AllPass(predicates));
+        }
+
+        public static Func<T1, Func<T2, Func<T3, Func<T4, bool>>>> AllPassCurried<T1, T2, T3, T4>(
+            Func<T1, T2, T3, T4, bool>[] predicates)
+        {
+            return Curry(AllPass(predicates));
+        }
     }
 }

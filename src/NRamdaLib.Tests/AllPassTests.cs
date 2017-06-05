@@ -11,6 +11,11 @@ namespace NRamdaLib.Tests
         private readonly Func<int, bool> _odd = x => x % 2 != 0;
         private readonly Func<int, bool> _lt20 = x => x < 20;
         private readonly Func<int, bool> _gt5 = x => x > 5;
+        private readonly Func<int, int, bool> _sumLt100 = (x, y) => x + y < 100;
+
+        private readonly Func<int, int, bool> _bothDivisibleBy5 =
+            (x, y) => x % 5 == 0 && y % 5 == 0;
+
         private readonly Func<int, int, int, int, bool> _plusEq = (w, x, y, z) => w + x == y + z;
 
         [Fact]
@@ -43,6 +48,44 @@ namespace NRamdaLib.Tests
         public void ReturnsTrueOnEmptyPredicateList()
         {
             NRamda.AllPass(new Func<int,bool>[0])(3).Should().BeTrue();
+        }
+
+        [Fact]
+        public void UncurriedWith2ParamPredicates()
+        {
+            var ok = NRamda.AllPass(new[] {_sumLt100, _bothDivisibleBy5});
+
+            ok(10, 35).Should().BeTrue();
+            ok(45, 65).Should().BeFalse();
+            ok(10, 27).Should().BeFalse();
+        }
+
+        [Fact]
+        public void CurriedWith2ParamPredicates()
+        {
+            var ok = NRamda.AllPassCurried(new[] {_sumLt100, _bothDivisibleBy5});
+
+            ok(10)(35).Should().BeTrue();
+            ok(45)(65).Should().BeFalse();
+            ok(10)(27).Should().BeFalse();
+        }
+
+        [Fact]
+        public void UncurriedWith4ParamPredicate()
+        {
+            var ok = NRamda.AllPass(new[] { _plusEq });
+
+            ok(3, 4, 5, 2).Should().BeTrue();
+            ok(6, 6, 5, 5).Should().BeFalse();
+        }
+
+        [Fact]
+        public void CurriedWith4ParamPredicate()
+        {
+            var ok = NRamda.AllPassCurried(new[] { _plusEq });
+
+            ok(3)(4)(5)(2).Should().BeTrue();
+            ok(6)(6)(5)(5).Should().BeFalse();
         }
 
         private class Card
