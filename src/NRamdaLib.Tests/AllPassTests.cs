@@ -26,7 +26,7 @@ namespace NRamdaLib.Tests
             Func<Card, bool> isQueen = c => c.Rank == 'Q';
             Func<Card, bool> isSpade = c => c.Suit == '♠';
 
-            var isQueenOfSpades = NRamda.AllPass(new[] {isQueen, isSpade});
+            var isQueenOfSpades = new[] {isQueen, isSpade}.AllPass();
 
             isQueenOfSpades(new Card {Rank = 'Q', Suit = '♣'}).Should().BeFalse();
             isQueenOfSpades(new Card {Rank = 'Q', Suit = '♠' }).Should().BeTrue();
@@ -35,7 +35,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void ReportsWhetherAllPredicatesAreSatisfiedByAGivenValue()
         {
-            var ok = NRamda.AllPass(new[] {_odd, _lt20, _gt5});
+            var ok = new[] {_odd, _lt20, _gt5}.AllPass();
 
             ok(7).Should().BeTrue();
             ok(9).Should().BeTrue();
@@ -53,7 +53,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void UncurriedWith2ParamPredicates()
         {
-            var ok = NRamda.AllPass(new[] {_sumLt100, _bothDivisibleBy5});
+            var ok = new[] {_sumLt100, _bothDivisibleBy5}.AllPass();
 
             ok(10, 35).Should().BeTrue();
             ok(45, 65).Should().BeFalse();
@@ -63,7 +63,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void CurriedWith2ParamPredicates()
         {
-            var ok = NRamda.AllPassCurried(new[] {_sumLt100, _bothDivisibleBy5});
+            var ok = new[] {_sumLt100, _bothDivisibleBy5}.AllPassCurried();
 
             ok(10)(35).Should().BeTrue();
             ok(45)(65).Should().BeFalse();
@@ -73,7 +73,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void UncurriedWith4ParamPredicate()
         {
-            var ok = NRamda.AllPass(new[] { _plusEq });
+            var ok = new[] { _plusEq }.AllPass();
 
             ok(3, 4, 5, 2).Should().BeTrue();
             ok(6, 6, 5, 5).Should().BeFalse();
@@ -82,7 +82,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void CurriedWith4ParamPredicate()
         {
-            var ok = NRamda.AllPassCurried(new[] { _plusEq });
+            var ok = new[] { _plusEq }.AllPassCurried();
 
             ok(3)(4)(5)(2).Should().BeTrue();
             ok(6)(6)(5)(5).Should().BeFalse();
