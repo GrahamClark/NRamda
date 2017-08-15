@@ -10,4 +10,8 @@
     <None Remove="NRamdaLib.v3.ncrunchproject" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="NRamda.Aperture.cs" />
+  </ItemGroup>
+
 </Project>
