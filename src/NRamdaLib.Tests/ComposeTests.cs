@@ -29,7 +29,12 @@ namespace NRamdaLib.Tests
         [Fact]
         public void CanComposeFunctionsWithDifferentTypes()
         {
-            var f = NRamda.Compose(NRamda.Map, NRamda.Multiply, int.Parse);
+            var f = NRamda
+                .Compose<string, int, Func<int, int>, Func<IEnumerable<int>, IEnumerable<int>>>(
+                    NRamda.Map,
+                    NRamda.Multiply,
+                    int.Parse);
+
             f("10")(new[] { 1, 2, 3 }).ShouldBeEquivalentTo(new[] { 10, 20, 30 });
         }
     }
