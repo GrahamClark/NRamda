@@ -10,5 +10,10 @@ namespace NRamdaLib
         {
             return list.Select(func);
         }
+
+        public static Func<IEnumerable<T>, IEnumerable<T>> Map<T>(this Func<T, T> func)
+        {
+            return Curry<Func<T, T>, IEnumerable<T>, IEnumerable<T>>(Map)(func);
+        }
     }
 }
