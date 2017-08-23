@@ -1,17 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>NRamdaLib</AssemblyName>
     <RootNamespace>NRamdaLib</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="NRamdaLib.v3.ncrunchproject" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="NRamda.Aperture.cs" />
   </ItemGroup>
 
 </Project>
