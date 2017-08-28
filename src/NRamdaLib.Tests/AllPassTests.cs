@@ -88,6 +88,13 @@ namespace NRamdaLib.Tests
             ok(6)(6)(5)(5).Should().BeFalse();
         }
 
+        [Fact]
+        public void WorksWithSortOfVariadicFunctions()
+        {
+            var ok = new[] {_odd, _lt20, _gt5}.AllPassVariadic();
+            ok(new[] { 7, 13, 9, 11 }).Should().BeTrue();
+        }
+
         private class Card
         {
             public char Rank { get; set; }

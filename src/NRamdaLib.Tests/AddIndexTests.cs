@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -17,6 +18,18 @@ namespace NRamdaLib.Tests
             var mapped = mapIndexed(TimesTwo, new[] {1, 2, 3, 4});
 
             mapped.ShouldAllBeEquivalentTo(expected);
+        }
+
+        [Fact]
+        public void CanReturnCurriedFunction()
+        {
+            var mapIndexed = NRamda.AddIndexCurried<int>(NRamda.Map);
+            Func<int, int, IEnumerable<int>, int> squareEnds =
+                (x, idx, list) => idx == 0 || idx == list.Count() - 1 ? x * x : x;
+
+            var makeSquaredEnds = mapIndexed(squareEnds);
+            makeSquaredEnds(new[] { 8, 6, 7, 5, 3, 0, 9 })
+                .ShouldBeEquivalentTo(new[] { 64, 6, 7, 5, 3, 0, 81 });
         }
 
         [Fact]

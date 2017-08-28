@@ -18,7 +18,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void AlwaysWithOneParameter()
         {
-            var t = NRamda.Always<int, string>("Tee");
+            var t = NRamda.Always<string, int>("Tee");
 
             t(1).Should().Be("Tee");
             t(456).Should().Be("Tee");
@@ -27,7 +27,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void AlwaysWithTwoParametersIsCurried()
         {
-            var t = NRamda.Always<int, bool, string>("Tee");
+            var t = NRamda.Always<string, int, bool>("Tee");
 
             t(3)(true).Should().Be("Tee");
             t(3939)(false).Should().Be("Tee");

@@ -9,11 +9,11 @@ namespace NRamdaLib.Tests
         [Fact]
         public void CanCombineTwoLists()
         {
-            NRamda.Concat(new[] {'a', 'b'}, new[] {'c', 'd'})
+            new[] {'a', 'b'}.Concat(new[] {'c', 'd'})
                   .Should()
                   .BeEquivalentTo(new[] {'a', 'b', 'c', 'd'});
 
-            NRamda.Concat(new char[0], new[] {'c', 'd'})
+            new char[0].Concat(new[] {'c', 'd'})
                   .Should()
                   .BeEquivalentTo(new[] {'c', 'd'});
         }
@@ -29,7 +29,7 @@ namespace NRamdaLib.Tests
         [Fact]
         public void IsCurried()
         {
-            var conc123 = NRamda.Concat(new[] {1, 2, 3});
+            var conc123 = new[] {1, 2, 3}.Concat();
             conc123(new[] {4, 5, 6})
                 .Should()
                 .BeEquivalentTo(new[] {1, 2, 3, 4, 5, 6});

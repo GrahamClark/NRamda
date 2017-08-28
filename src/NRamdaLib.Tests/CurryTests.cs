@@ -12,7 +12,7 @@ namespace NRamdaLib.Tests
         {
             Func<int, int, int> add = (x, y) => x + y;
 
-            var curriedAdd = NRamda.Curry(add);
+            var curriedAdd = add.Curry();
 
             curriedAdd(3)(4).Should().Be(add(3, 4));
         }
@@ -22,7 +22,7 @@ namespace NRamdaLib.Tests
         {
             Func<string, string, string> append = (x, y) => x + y;
 
-            var curriedAppend = NRamda.Curry(append);
+            var curriedAppend = append.Curry();
 
             curriedAppend("hello")("there").Should().Be(append("hello", "there"));
         }
@@ -32,7 +32,7 @@ namespace NRamdaLib.Tests
         {
             Func<int, string, int, string> addString = (x, op, y) => $"{x} {op} {y}";
 
-            var curriedAddString = NRamda.Curry(addString);
+            var curriedAddString = addString.Curry();
 
             curriedAddString(1)("+")(2).Should().Be(addString(1, "+", 2));
         }
@@ -43,7 +43,7 @@ namespace NRamdaLib.Tests
             Func<double, double, int, int, string> f =
                 (w, x, y, z) => (w % x + y - z).ToString(CultureInfo.InvariantCulture);
 
-            var curriedF = NRamda.Curry(f);
+            var curriedF = f.Curry();
 
             curriedF(3.5)(2.6)(7)(9).Should().Be(f(3.5, 2.6, 7, 9));
         }
